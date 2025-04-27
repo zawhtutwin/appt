@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <title>Persons List</title>
+</head>
+<body>
+    <h1>Persons</h1>
+    <a th:href="@{/persons/new}">Create New Person</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+		<tbody>
+		    <tr th:each="person : ${persons}">
+		        <td th:text="${person.id}"></td>
+		        <td th:text="${person.name}"></td>
+		        <td th:text="${person.phone}"></td>
+		        <td>
+		            <a th:href="@{/persons/edit/{id}(id=${person.id})}">Edit</a>
+		        </td>
+		    </tr>
+		</tbody>
+    </table>
+</body>
+</html>
