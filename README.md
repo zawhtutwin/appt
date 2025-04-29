@@ -1,1 +1,19 @@
 This is the Spring Cloud Gateway
+```properties
+# Spring Cloud Gateway routes configuration
+server.port=8080
+spring.cloud.discovery.enabled=true
+# Route for Spring Boot API (Backend)
+spring.cloud.gateway.routes[0].id=doctor-api
+spring.cloud.gateway.routes[0].uri=http://localhost:8081
+spring.cloud.gateway.routes[0].predicates=Path=/api/**
+
+# Route for Vue Frontend (Vite)
+spring.cloud.gateway.routes[1].id=doctor-frontend
+spring.cloud.gateway.routes[1].uri=http://localhost:5173
+spring.cloud.gateway.routes[1].predicates=Path=/doctors/**, Path=/create-doctors/**
+
+spring.cloud.gateway.routes[2].id=default-frontend
+spring.cloud.gateway.routes[2].uri=http://localhost:5173
+spring.cloud.gateway.routes[2].predicates=Path=/**
+```
